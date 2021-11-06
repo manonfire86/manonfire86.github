@@ -1,0 +1,112 @@
+<html>
+
+<!--
+    
+    Note to Students:
+
+        This is a very short introduction to using Javascript in the browser.
+
+        To see this as a webpage, you have to start a *Local Web Server*. There are many ways to do this: since you all have python installed, we will use python.
+
+        - Open terminal
+
+        - 'cd' into the directory where this html file is (js_in_webpage.html)
+
+        - Type the following into the terminal and hit 'enter':
+            
+            ### IN PYTHON 2 ### 
+            python -m SimpleHTTPServer
+            
+            ### IN PYTHON 3 ### 
+            python -m http.server 
+
+            your server should read something like: Serving HTTP on 0.0.0.0 port 8000 ...
+
+        - now go to any browser and type in the HTTP address and the filename: something like:
+
+            http://0.0.0.0:8000/js_in_webpage.html
+
+            or
+
+            http://localhost:8000/js_in_webpage.html
+        
+        - Congrats: you now have a local HTTP server running. Now, every time you change this file and save it, when you reload the browser you will see your changes!
+-->
+
+<head><title>Intro to JS in a Browser</title></head>
+
+<body>
+
+<h1>Module 5: Beginner Assignment</h1>
+
+<script type="text/javascript">
+
+document.write('<br><p>Type a word you want reversed!')
+
+// Basic functions
+
+function revStr(str){
+    var revstr = str.split("").reverse().join("")
+    return revstr;
+};
+
+
+function calc(){
+    var t = document.getElementById("target");
+    t.innerHTML = revStr(document.getElementById('str').value);
+}
+</script>
+<p>
+<form>
+    <input id="str" type="string" size="4">
+    <input type="button" value="reverse" onClick="calc();">
+</form>
+</p>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="other_script.js"></script>
+
+<script type="text/javascript"> document.write(myScript());</script>
+
+</body>
+<script type="text/javascript">
+
+    document.write('<br><p>Input a Number for the first 20 Multiples!')
+    
+    // Basic functions
+    
+    function multiplier(number){
+        list = [];
+        var tabval = '<table border="1">';
+        for(i = 1; i <=20;i++){list.push(i*number)}
+        for (i = 0; i < 20; i++){
+            if (i % 4 == 0) { 
+                tabval = tabval +'<tr>'
+            };
+            tabval = tabval + '<td>' + list[i] + '</td>';
+            if (i % 4 == 3){
+                tabval = tabval + '</tr>'};};
+        tabval = tabval + '</table>';
+        return tabval
+    };
+    
+    
+    function multi(){
+        var y = document.getElementById("tnum");
+        y.innerHTML = multiplier(document.getElementById('num').value);
+    }
+    </script>
+    <p>
+    <form>
+        <input id="num" type="number" size="4">
+        <input type="button" value="calculate" onClick="multi();">
+    </form>
+    </p>
+    
+    <div id="tnum"></div>
+    
+    <script type="text/javascript" src="other_script.js"></script>
+    
+    <script type="text/javascript"> document.write(myScript());</script>
+</html>
